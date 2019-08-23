@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSE2 WEBGL EK2</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script type="module" src="assets/js/main.js"></script>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <main>
+            <h1 class="title">CSSE-II Ek2 | Yannick Mallefroy</h1>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="v_som-tab" data-toggle="tab" href="#v_som" role="tab" aria-controls="v_som" aria-selected="true">Vector Optellen</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="verschil-tab" data-toggle="tab" href="#verschil" role="tab" aria-controls="verschil" aria-selected="false">Verschil van Vectoren</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="rotatie-tab" data-toggle="tab" href="#rotatie" role="tab" aria-controls="rotatie" aria-selected="false">Rotatie Matrix</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mul-tab" data-toggle="tab" href="#mul" role="tab" aria-controls="mul" aria-selected="false">Matrix Vermenigvuldigen</a> 
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="v_som" role="tabpanel" aria-labelledby="v_som-tab">
+                    <h3 id=txtOperationVect>Vectoren optellen</h3>
+
+                    <form class="formVector_A">
+                        <label for= "divValueGroup" id="colorVectorA_red">Vector A:</label>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorA_x">x:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorA_x" value="0.5">
+                            <label for="vectorA_x" id="vectorA_xValue">0.5</label>
+                        </div>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorA_y">y:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorA_y" value="0">
+                            <label for="vectorA_y" id="vectorA_yValue">0</label>
+                        </div>
+                    </form>
+
+                    <form class="formVector_B">
+                        <label for="divValueGroup" id="colorVectorA_blue">Vector B:</label>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorB_x">x:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorB_x" value="0">
+                            <label for="vectorB_x" id="vectorB_xValue">0</label>
+                        </div>
+                        <div class="divWrapperValue">
+                            <label for="vectorB_y">y:</lab>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorB_y" value="0.5">
+                            <label for="vectorB_y" id="vectorB_yValue">0.5</label>
+                        </div>
+                    </form>
+                
+                    <div id="VectorOptellen_Canvas" class="classCanvas"></div>
+                </div>
+
+                <div class="tab-pane fade show" id="verschil" role="tabpanel" aria-labelledby="verschil-tab">
+                    <h3 id=txtOperationVect>Verschil van vectoren</h3>
+
+                    <form class="formVector_A">
+                        <label for= "divValueGroup" id="colorVectorA_red">Vector A:</label>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorC_x">x:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorC_x" value="0.5">
+                            <label for="vectorC_x" id="vectorC_xValue">0.5</label>
+                        </div>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorC_y">y:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorC_y" value="0">
+                            <label for="vectorC_y" id="vectorC_yValue">0</label>
+                        </div>
+                    </form>
+
+                    <form class="formVector_B">
+                        <label for="divValueGroup" id="colorVectorA_blue">Vector B:</label>
+                        <div class="divValueGroup input-group mb-3">
+                            <label for="vectorD_x">x:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorD_x" value="0">
+                            <label for="vectorD_x" id="vectorD_xValue">0</label>
+                        </div>
+                        <div class="divWrapperValue">
+                            <label for="vectorD_y">y:</lab>
+                            <input type="range" min="-1" max="1" step="0.1" id="vectorD_y" value="0.5">
+                            <label for="vectorD_y" id="vectorD_yValue">0.5</label>
+                        </div>
+                    </form>
+                
+                    <div id="VectorVerschil_Canvas" class="classCanvas"></div>
+                </div>
+
+                <div class="tab-pane fade show" id="rotatie" role="tabpanel" aria-labelledby="rotatie-tab">
+                    <h3 id=txtOperationVect>Rotatie Matrix</h3>
+
+                    <form class="formVector_B">
+                        <div id="divRotMtx">
+                            <div class="divWrapperValue">
+                                <label for="rot_omega">Θ:</>
+                                <input type="range" min="-180" max="180" step="10" id="rot_omega">
+                                <label for="rot_omega" id="rotValue">0°</>
+                            </div>
+                        </div>
+                    </form>
+                
+                    <!-- <div id="MatrixSom_Canvas" class="classCanvas"></div> -->
+                    <div class="classCanvas" id="divMatrixCanvas"></div>
+                </div>
+
+                <div class="tab-pane fade show" id="mul" role="tabpanel" aria-labelledby="mul-tab">
+                    <h3 id=txtOperationVect>Matrix Vermenigvuldigen</h3>
+
+                    <form>
+                        <div class="divValue">
+                            <label for="scale_x">Sx:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="scale_x" value="0.5">
+                            <label for="scale_x" id="scale_xValue">0.5</>
+                        </div>
+                        <div class="divValue">
+                            <label for="scale_y">Sy:</label>
+                            <input type="range" min="-1" max="1" step="0.1" id="scale_y" value="0.5">
+                            <label for="scale_y" id="scale_yValue">0.5</label>
+                        </div>
+                    </form>
+                
+                    <!-- <div id="MatrixSom_Canvas" class="classCanvas"></div> -->
+                    <div class="classCanvas" id="divMatrixMulCanvas"></div>
+                </div>
+
+                
+            </div>
+        </main>
+    </body>
+
+    </html>
+</body>
+
+</html>
